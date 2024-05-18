@@ -1,0 +1,31 @@
+USE world ;
+SELECT country.Name, SUM(city.population)
+FROM country, city 
+WHERE city.CountryCode = country.code
+GROUP BY city.countryCode;
+
+SELECT country.Name, COUNT(city.Name)
+FROM country, city 
+WHERE city.CountryCode = country.code
+GROUP BY country.code;
+
+SELECT COUNT(country.Name)
+FROM country
+WHERE country.Continent = 'Africa' ;
+
+SELECT COUNT(city.Name)
+FROM city, country
+WHERE city.CountryCode = country.code
+AND country.Name = 'India' ;
+
+SELECT city.Name, country.Name, city.population 
+FROM city, country
+WHERE city.CountryCode = country.code 
+AND city.Name = 'Kabul';
+
+SELECT country.Name, city.Name, countrylanguage.language
+FROM country, city, countrylanguage 
+WHERE city.CountryCode = country.code
+AND countrylanguage.countryCode = country.code 
+AND city.Name = 'Kabul';
+\
